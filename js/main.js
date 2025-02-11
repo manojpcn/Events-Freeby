@@ -330,20 +330,41 @@ Version:	1.1
 	/*====================
 		Menu Scroll JS
 	======================*/
-	$('section').waypoint(function(direction) {
-		//var activeSection = $(this).next();
-		var activeSection = $(this);
-		if(direction === 'down'){
-			activeSection = $(this).next();
-		}
-		//activeSection = $(this);
-		var sectionId   = activeSection.attr('id');
-		console.log(sectionId);
-		$('ul li').removeClass('active');
-		// $('ul li').addClass('active');
-		$('ul li.' + sectionId).addClass('active');
-		console.log(activeSection);
-	});
+	$('section').each(function () {
+        var section = $(this);
+
+        section.waypoint(function (direction) {
+            var activeSection = section;
+
+            // If scrolling down, set activeSection to the next section
+            if (direction === 'down') {
+                activeSection = section.next();
+            }
+
+            var sectionId = activeSection.attr('id');
+            console.log('Active Section ID:', sectionId);
+
+            // Update active class on navigation
+            $('ul li').removeClass('active');
+            $('ul li.' + sectionId).addClass('active');
+
+            console.log('Active Section:', activeSection);
+        }, { offset: '50%' }); // Adjust offset to trigger earlier/later
+    });
+	// $('section').waypoint(function(direction) {
+	// 	//var activeSection = $(this).next();
+	// 	var activeSection = $(this);
+	// 	if(direction === 'down'){
+	// 		activeSection = $(this).next();
+	// 	}
+	// 	//activeSection = $(this);
+	// 	var sectionId   = activeSection.attr('id');
+	// 	console.log(sectionId);
+	// 	$('ul li').removeClass('active');
+	// 	// $('ul li').addClass('active');
+	// 	$('ul li.' + sectionId).addClass('active');
+	// 	console.log(activeSection);
+	// });
 
 	$('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
