@@ -330,6 +330,10 @@ Version:	1.1
 	/*====================
 		Menu Scroll JS
 	======================*/
+	if (typeof $.fn.waypoint !== "function") {
+        console.error("Waypoints.js is not loaded.");
+        return;
+    }
 	$('section').each(function () {
         var section = $(this);
 
