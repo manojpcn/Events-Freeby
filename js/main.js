@@ -327,5 +327,41 @@ Version:	1.1
 		$('.preloader').addClass('preloader-deactivate');
 	});
 	
+	/*====================
+		Menu Scroll JS
+	======================*/
+	$('section').waypoint(function(direction) {
+		//var activeSection = $(this).next();
+		var activeSection = $(this);
+		if(direction === 'down'){
+			activeSection = $(this).next();
+		}
+		//activeSection = $(this);
+		var sectionId   = activeSection.attr('id');
+		console.log(sectionId);
+		$('ul li').removeClass('active');
+		// $('ul li').addClass('active');
+		$('ul li.' + sectionId).addClass('active');
+		console.log(activeSection);
+	});
+
+	$('a[href*=#]:not([href=#])').click(function() {
+		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			|| location.hostname == this.hostname) {
+	
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+			   if (target.length) {
+				 $('html,body').animate({
+					 scrollTop: target.offset().top - (target.height() / 5)
+				}, 500);
+				return false;
+			}
+		}
+	});
+
+	const d = new Date();
+	let year = d.getFullYear();
+	$('#year').html(year);
 	
 })(jQuery);
