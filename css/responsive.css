@@ -6,6 +6,11 @@ Description: Mediplus - Doctor HTML Template.
 Version:	1.1
 ========================================*/   
 /* Tablet Screen */
+@media only screen and (max-width: 991px) {
+	.logo h3{
+		font-size: 15px;
+	}
+}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 /* Header Sticky */
 .section{
@@ -377,6 +382,9 @@ Version:	1.1
 }
 /* Mobile Screen */
 @media only screen and (max-width: 767px) {
+	.pro-features{
+		display: none;
+	}
 .header.sticky{
 	
 }
@@ -1163,7 +1171,7 @@ Version:	1.1
 	padding: 70px 0;
 }
 .call-action .content h2 {
-	font-size: 28px;
+	font-size: 20px;
 	line-height: 40px;
 }
 .services .single-service {

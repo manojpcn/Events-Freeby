@@ -330,31 +330,31 @@ Version:	1.1
 	/*====================
 		Menu Scroll JS
 	======================*/
-	if (typeof $.fn.waypoint !== "function") {
-        console.error("Waypoints.js is not loaded.");
-        return;
-    }
-	$('section').each(function () {
-        var section = $(this);
+	// if (typeof $.fn.waypoint !== "function") {
+    //     console.error("Waypoints.js is not loaded.");
+    //     return;
+    // }
+	// $('section').each(function () {
+    //     var section = $(this);
 
-        section.waypoint(function (direction) {
-            var activeSection = section;
+    //     section.waypoint(function (direction) {
+    //         var activeSection = section;
 
-            // If scrolling down, set activeSection to the next section
-            if (direction === 'down') {
-                activeSection = section.next();
-            }
+    //         // If scrolling down, set activeSection to the next section
+    //         if (direction === 'down') {
+    //             activeSection = section.next();
+    //         }
 
-            var sectionId = activeSection.attr('id');
-            console.log('Active Section ID:', sectionId);
+    //         var sectionId = activeSection.attr('id');
+    //         console.log('Active Section ID:', sectionId);
 
-            // Update active class on navigation
-            $('ul li').removeClass('active');
-            $('ul li.' + sectionId).addClass('active');
+    //         // Update active class on navigation
+    //         $('ul li').removeClass('active');
+    //         $('ul li.' + sectionId).addClass('active');
 
-            console.log('Active Section:', activeSection);
-        }, { offset: '50%' }); // Adjust offset to trigger earlier/later
-    });
+    //         console.log('Active Section:', activeSection);
+    //     }, { offset: '50%' }); // Adjust offset to trigger earlier/later
+    // });
 	// $('section').waypoint(function(direction) {
 	// 	//var activeSection = $(this).next();
 	// 	var activeSection = $(this);
@@ -370,20 +370,20 @@ Version:	1.1
 	// 	console.log(activeSection);
 	// });
 
-	$('a[href*=#]:not([href=#])').click(function() {
-		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-			|| location.hostname == this.hostname) {
+	// $('a[href*=#]:not([href=#])').click(function() {
+	// 	if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+	// 		|| location.hostname == this.hostname) {
 	
-			var target = $(this.hash);
-			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-			   if (target.length) {
-				 $('html,body').animate({
-					 scrollTop: target.offset().top - (target.height() / 5)
-				}, 500);
-				return false;
-			}
-		}
-	});
+	// 		var target = $(this.hash);
+	// 		target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	// 		   if (target.length) {
+	// 			 $('html,body').animate({
+	// 				 scrollTop: target.offset().top - (target.height() / 5)
+	// 			}, 500);
+	// 			return false;
+	// 		}
+	// 	}
+	// });
 
 	const d = new Date();
 	let year = d.getFullYear();

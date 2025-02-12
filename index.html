@@ -806,7 +806,7 @@
 	</section>
 		<!--/Ens clients -->
 		<!-- Start clients -->
-		 <section class="sec-clients">
+		 <!-- <section class="sec-clients">
 		<div class="clients overlay">
 			<div class="container">
 				<div class="row">
@@ -844,7 +844,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 		<!--/Ens clients -->
 		
 		<!-- Start Appointment -->
@@ -1022,6 +1022,30 @@
 							</div>
 						</div> -->
 						<div class="col-lg-4 col-md-6 col-12">
+							<div class="single-footer f-link">
+								<h2>Services</h2>
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-12">
+										<ul>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Corporate Meetings</a></li>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Annual Days / Annual Parties</a></li>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Town halls & Conferences</a></li>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Product Launches / Brand Promotions</a></li>
+										</ul>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<ul>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Sales & Dealer Meets</a></li>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Facility Launches</a></li>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Customer Activation</a></li>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Sports Events</a></li>
+											<li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Roadshows & Exhibition Stalls</a></li>	
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="col-lg-4 col-md-6 col-12">
 							<div class="single-footer">
 								<h2>Newsletter</h2>
 								<p>subscribe to our newsletter to get allour news in your inbox.. Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
@@ -1031,7 +1055,7 @@
 									<button class="button"><i class="icofont icofont-paper-plane"></i></button>
 								</form>
 							</div>
-						</div>
+						</div> -->
 							<div class="col-lg-12 col-md-12 col-12">
 								<div class="single-footer">
 						<ul class="social">
@@ -1098,33 +1122,64 @@
 		<!-- Magnific Popup JS -->
 		<script src="js/jquery.magnific-popup.min.js"></script>
 		<!-- Counter Up CDN JS -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/waypoints.min.js"></script>
+		<!-- <script src="js/waypoint.js"></script> -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 		<!-- counterup JS -->
 		<script src="js/jquery.counterup.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="js/bootstrap.min.js"></script>
 		<!-- Google Map API Key JS -->
 		<script src="https://maps.google.com/maps/api/js?key=AIzaSyDGqTyqoPIvYxhn_Sa7ZrK5bENUWhpCo0w"></script>
 		<!-- Gmaps JS -->
 		<script src="js/gmaps.min.js"></script>
 		<!-- Map Active JS -->
 		<script src="js/map-active.js"></script>
-		<!-- Bootstrap JS -->
-		<script src="js/bootstrap.min.js"></script>
+		
 		<!-- Main JS -->
 		<script src="js/main.js"></script>
-		
-		<!-- <script>
-			
-			$(document).ready(function() {
-				$('#year').html(year);
-			});
-		</script>
-
 		<script>
-			$(document).ready(function(){
-        
-});	
+		 $('section').each(function () {
+        var section = $(this);
+			
+        section.waypoint(function (direction) {
+            var activeSection = section;
+            // If scrolling down, set activeSection to the next section
+            if (direction === 'down') {
+                activeSection = section.next();
+            }
+			if (direction === 'up') {
+                activeSection = section.prev();
+            }
 
+            sectionId = activeSection.attr('id');
+            console.log('Active Section ID:', sectionId);
+			if(sectionId){
+				// Update active class on navigation
+				$('ul li').removeClass('active');
+				$('ul li.' + sectionId).addClass('active');
+				console.log('Active Section:', activeSection);
 
-		</script> -->
+			}
+            
+
+        }, //{ offset: '50%' }
+	); // Adjust offset to trigger earlier/later
+    });
+
+	$('a[href*=#]:not([href=#])').click(function() {
+		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			|| location.hostname == this.hostname) {
+	
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+			   if (target.length) {
+				 $('html,body').animate({
+					 scrollTop: target.offset().top - (target.height() / 5)
+				}, 500);
+				return false;
+			}
+		}
+	});
+		</script>
     </body>
 </html>
